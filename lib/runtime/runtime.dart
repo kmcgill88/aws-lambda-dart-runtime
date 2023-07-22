@@ -9,15 +9,15 @@ import 'exception.dart';
 /// and returns a [InvocationResult]. The result is ecoded
 /// by the [Runtime] and posted to the Lambda API.
 typedef Handler<T> = Future<InvocationResult> Function(
-    Context context, T event);
+  Context context,
+  T event,
+);
 
 class _RuntimeHandler {
   final Type type;
   final dynamic handler;
 
-  const _RuntimeHandler(this.type, this.handler)
-      : assert(type != null),
-        assert(handler != null);
+  const _RuntimeHandler(this.type, this.handler) : assert(handler != null);
 }
 
 /// A Runtime manages the interface to the Lambda API.
@@ -109,8 +109,10 @@ class Runtime {
             'No handler with name "${context.handler}" registered in runtime!',
           );
         }
-        final event =
-            Event.fromHandler(func.type, await nextInvocation.response);
+        final event = Event.fromHandler(
+          func.type,
+          await nextInvocation.response,
+        );
         final result = await func.handler(context, event);
 
         await _client.postInvocationResponse(result);
@@ -118,11 +120,11 @@ class Runtime {
         if (nextInvocation?.requestId != null) {
           await _client.postInvocationError(
             nextInvocation!.requestId,
-            InvocationError(error, stacktrace),
+            InvocationError(error: error, stackTrace: stacktrace),
           );
         } else {
           throw RuntimeException(
-            InvocationError(error, stacktrace).toJson().toString(),
+            InvocationError(error: error, stackTrace: stacktrace).toJson().toString(),
           );
         }
       }

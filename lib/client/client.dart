@@ -73,9 +73,10 @@ class InvocationResult {
   /// any json-encodable data type.
   final dynamic body;
 
-  const InvocationResult(this.requestId, this.body)
-      : assert(requestId != null),
-        assert(body != null);
+  const InvocationResult({
+    required this.requestId,
+    required this.body,
+  });
 }
 
 /// Invocation error occurs when there has been an
@@ -98,7 +99,10 @@ class InvocationError {
         'stackTrace': this.stackTrace.toString()
       };
 
-  const InvocationError(this.error, this.stackTrace);
+  const InvocationError({
+    required this.error,
+    required this.stackTrace,
+  });
 }
 
 /// Client is the Lambda Runtime Interface client.

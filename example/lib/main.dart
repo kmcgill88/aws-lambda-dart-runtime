@@ -7,7 +7,9 @@ void main() async {
 
     /// it returns an encoded response to the gateway
     return InvocationResult(
-        context.requestId, AwsApiGatewayResponse.fromJson(response));
+      requestId: context.requestId,
+      body: AwsApiGatewayResponse.fromJson(response),
+    );
   };
 
   /// The Runtime is a singleton. You can define the handlers as you wish.
