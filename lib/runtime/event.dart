@@ -1,7 +1,5 @@
 import 'package:aws_lambda_dart_runtime/aws_lambda_dart_runtime.dart';
 
-import '../events/apigateway_event.dart';
-import 'exception.dart';
 
 /// Event is the abstraction for every event that
 /// can be ingested by a handler.
