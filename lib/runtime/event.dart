@@ -1,3 +1,5 @@
+import 'package:aws_lambda_dart_runtime/aws_lambda_dart_runtime.dart';
+
 import '../events/apigateway_event.dart';
 import 'exception.dart';
 
@@ -8,8 +10,8 @@ import 'exception.dart';
 /// own events here.
 abstract class Event {
   static final _registry = {
-    AwsApiGatewayEvent: (Map<String, dynamic> json) =>
-        AwsApiGatewayEvent.fromJson(json),
+    AwsApiGatewayEvent: (Map<String, dynamic> json) => AwsApiGatewayEvent.fromJson(json),
+    AwsApiGatewayV2Event: (Map<String, dynamic> json) => AwsApiGatewayV2Event.fromJson(json),
   };
 
   /// Checks if a type of event is already registered.
