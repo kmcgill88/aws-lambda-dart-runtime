@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
@@ -11,7 +10,7 @@ part 'apigateway_event.g.dart';
 /// Furthermore it indicates if the [body] is Base64 encoded or not.
 class AwsApiGatewayResponse {
   /// The body of the HTTP Response send from the API Gateway to the client.
-  String body;
+  String? body;
 
   /// Indicates if the [body] is Base64 encoded or not. By default is `false`.
   bool isBase64Encoded;
@@ -34,13 +33,18 @@ class AwsApiGatewayResponse {
   /// The factory creates a new [AwsApiGatewayResponse] from JSON.
   /// It optionally accepts the Base64 encoded flag and a HTTP Status Code
   /// for the response.
-  factory AwsApiGatewayResponse.fromJson(Map<String, dynamic> body,
-      {bool isBase64Encoded, int statusCode, Map<String, String> headers}) {
+  factory AwsApiGatewayResponse.fromJson(
+    Map<String, dynamic> body, {
+    bool isBase64Encoded = false,
+    int statusCode = 200,
+    Map<String, String>? headers,
+  }) {
     return AwsApiGatewayResponse(
-        body: json.encode(body),
-        isBase64Encoded: isBase64Encoded,
-        headers: headers,
-        statusCode: statusCode);
+      body: json.encode(body),
+      isBase64Encoded: isBase64Encoded,
+      headers: headers ?? {},
+      statusCode: statusCode,
+    );
   }
 
   /// The Response that should be returned by the API Gateway for the
@@ -48,16 +52,11 @@ class AwsApiGatewayResponse {
   /// But also it signals if the [body] is Base64 encoded and what the HTTP Status Code
   /// of the response is.
   AwsApiGatewayResponse({
-    String body,
-    bool isBase64Encoded,
-    Map<String, String> headers,
-    int statusCode,
-  }) {
-    this.body = body ?? '';
-    this.isBase64Encoded = isBase64Encoded ?? false;
-    this.headers = headers ?? {"Content-Type": "application/json"};
-    this.statusCode = statusCode ?? HttpStatus.ok;
-  }
+    this.body,
+    required this.headers,
+    required this.isBase64Encoded,
+    required this.statusCode,
+  });
 }
 
 /// API Gateway Event ...
@@ -104,15 +103,15 @@ class AwsApiGatewayEvent {
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventToJson(this);
 
   const AwsApiGatewayEvent(
-      {this.resource,
-      this.path,
-      this.httpMethod,
-      this.body,
-      this.headers,
-      this.queryStringParameters,
-      this.stageVariables,
-      this.requestContext,
-      this.pathParameters});
+      {required this.resource,
+      required this.path,
+      required this.httpMethod,
+      required this.body,
+      required this.headers,
+      required this.queryStringParameters,
+      required this.stageVariables,
+      required this.requestContext,
+      required this.pathParameters});
 }
 
 /// API Gateway Event Headers ...
@@ -172,8 +171,8 @@ class AwsApiGatewayEventHeaders {
   @JsonKey(name: "X-Amzn-Trace-Id")
   final String xAmznTraceId;
 
-  @JsonKey(ignore: true)
-  Map<String, dynamic> raw;
+  @JsonKey(includeFromJson: false)
+  Map<String, dynamic> raw = {};
 
   factory AwsApiGatewayEventHeaders.fromJson(Map<String, dynamic> json) {
     final event = _$AwsApiGatewayEventHeadersFromJson(json);
@@ -185,24 +184,24 @@ class AwsApiGatewayEventHeaders {
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventHeadersToJson(this);
 
   AwsApiGatewayEventHeaders(
-      {this.accept,
-      this.acceptEncoding,
-      this.cloudfrontIsDesktopViewer,
-      this.cloudfrontIsMobileViewer,
-      this.cloudfrontIsSmartTvViewer,
-      this.cloudfrontForwardProto,
-      this.cloudfrontIsTabletViewer,
-      this.cloudfrontViewerCountry,
-      this.upgradeInsecureRequests,
-      this.cacheControl,
-      this.host,
-      this.via,
-      this.userAgent,
-      this.xAmzCfId,
-      this.xAmznTraceId,
-      this.xForwardedFor,
-      this.xForwardedPort,
-      this.xForwardedProto});
+      {required this.accept,
+      required this.acceptEncoding,
+      required this.cloudfrontIsDesktopViewer,
+      required this.cloudfrontIsMobileViewer,
+      required this.cloudfrontIsSmartTvViewer,
+      required this.cloudfrontForwardProto,
+      required this.cloudfrontIsTabletViewer,
+      required this.cloudfrontViewerCountry,
+      required this.upgradeInsecureRequests,
+      required this.cacheControl,
+      required this.host,
+      required this.via,
+      required this.userAgent,
+      required this.xAmzCfId,
+      required this.xAmznTraceId,
+      required this.xForwardedFor,
+      required this.xForwardedPort,
+      required this.xForwardedProto});
 }
 
 /// API Gateway Event Request Context ...
@@ -236,14 +235,15 @@ class AwsApiGatewayEventRequestContext {
   Map<String, dynamic> toJson() =>
       _$AwsApiGatewayEventRequestContextToJson(this);
 
-  const AwsApiGatewayEventRequestContext(
-      {this.accountId,
-      this.resourceId,
-      this.stage,
-      this.requestId,
-      this.resourcePath,
-      this.httpMethod,
-      this.apiId});
+  const AwsApiGatewayEventRequestContext({
+    required this.accountId,
+    required this.resourceId,
+    required this.stage,
+    required this.requestId,
+    required this.resourcePath,
+    required this.httpMethod,
+    required this.apiId,
+  });
 }
 
 /// API Gateway Event Identity
@@ -290,15 +290,15 @@ class AwsApiGatewayEventRequestContextIdentity {
       _$AwsApiGatewayEventRequestContextIdentityToJson(this);
 
   const AwsApiGatewayEventRequestContextIdentity(
-      {this.cognitoIdentityPoolId,
-      this.cognitoAuthenticationProvider,
-      this.cognitoAuthenticationType,
-      this.caller,
-      this.accountId,
-      this.cognitoIdentityId,
-      this.apiKey,
-      this.sourceIp,
-      this.user,
-      this.userAgent,
-      this.userArn});
+      {required this.cognitoIdentityPoolId,
+      required this.cognitoAuthenticationProvider,
+      required this.cognitoAuthenticationType,
+      required this.caller,
+      required this.accountId,
+      required this.cognitoIdentityId,
+      required this.apiKey,
+      required this.sourceIp,
+      required this.user,
+      required this.userAgent,
+      required this.userArn});
 }

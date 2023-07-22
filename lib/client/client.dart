@@ -36,27 +36,29 @@ class NextInvocation {
 
   /// Digesting a [HttpClientResponse] into a [NextInvocation].
   static Future<NextInvocation> fromResponse(
-      HttpClientResponse response) async {
+    HttpClientResponse response,
+  ) async {
     return NextInvocation(
-        response: json
-            .decode((await response.transform(Utf8Decoder()).toList()).first),
-        requestId: response.headers.value(runtimeRequestId),
-        deadlineMs: response.headers.value(runtimeDeadlineMs),
-        invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn),
-        traceId: response.headers.value(runtimeTraceId),
-        clientContext: response.headers.value(runtimeClientContext),
-        cognitoIdentity: response.headers.value(runtimeCognitoIdentity));
+      response:
+          json.decode((await response.transform(Utf8Decoder()).toList()).first),
+      requestId: response.headers.value(runtimeRequestId)!,
+      deadlineMs: response.headers.value(runtimeDeadlineMs)!,
+      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn)!,
+      traceId: response.headers.value(runtimeTraceId)!,
+      clientContext: response.headers.value(runtimeClientContext)!,
+      cognitoIdentity: response.headers.value(runtimeCognitoIdentity)!,
+    );
   }
 
-  const NextInvocation(
-      {this.requestId,
-      this.deadlineMs,
-      this.traceId,
-      this.clientContext,
-      this.cognitoIdentity,
-      this.invokedFunctionArn,
-      this.response})
-      : assert(requestId != null);
+  const NextInvocation({
+    required this.requestId,
+    required this.deadlineMs,
+    required this.traceId,
+    required this.clientContext,
+    required this.cognitoIdentity,
+    required this.invokedFunctionArn,
+    required this.response,
+  });
 }
 
 /// Invocation result is the result that the invoked handler
@@ -103,7 +105,7 @@ class InvocationError {
 /// It is implemented as a singleton whereby [Client.instance]
 /// always returns the already instantiated client.
 class Client {
-  HttpClient _client;
+  late HttpClient _client;
 
   static final Client _singleton = Client._internal();
 
@@ -153,11 +155,7 @@ class Client {
         'http://${runtimeApi}/${runtimeApiVersion}/runtime/invocation/$requestId/error',
       ),
     );
-    request.add(
-        utf8.encode(
-            json.encode(err)
-        )
-    );
+    request.add(utf8.encode(json.encode(err)));
 
     return await request.close();
   }

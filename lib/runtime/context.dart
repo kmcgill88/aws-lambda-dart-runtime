@@ -26,42 +26,43 @@ class Context {
   /// from the Lambda Runtime Interface for the next [Handler<T>] invocation.
   static fromNextInvocation(NextInvocation nextInvocation) {
     return Context(
-        requestId: nextInvocation.requestId,
-        invokedFunction: nextInvocation.invokedFunctionArn);
+      requestId: nextInvocation.requestId,
+      invokedFunctionArn: nextInvocation.invokedFunctionArn,
+    );
   }
 
   /// Handler that is used for the invocation of the function
-  String handler;
+  String? handler = Platform.environment[_kAWSLambdaHandler];
 
   /// Name of the function that is invoked.
-  String functionName;
+  String? functionName = Platform.environment[_kAWSLambdaFunctionName];
 
   /// Version of the function that is invoked.
-  String functionVersion;
+  String? functionVersion = Platform.environment[_kAWSLambdaFunctionVersion];
 
   /// Memory sized that is allocated to execution of the function.
-  String functionMemorySize;
+  String? functionMemorySize = Platform.environment[_kAWSLambdaFunctionMemorySize];
 
   /// Cloudwatch LogGroup that is associated with the Lambda.
-  String logGroupName;
+  String? logGroupName = Platform.environment[_kAWSLambdaLogGroupName];
 
   /// Cloudwach LogStream that is associated with the Lambda.
-  String logStreamName;
+  String? logStreamName = Platform.environment[_kAWSLambdaLogStreamName];
 
   /// Region that this function exists in.
-  String region;
+  String? region = Platform.environment[_kAWSLambdaRegion];
 
   /// The execution environment of the function.
-  String executionEnv;
+  String? executionEnv = Platform.environment[_kAWSLambdaExecutionEnv];
 
   /// Access key that is acquired via STS.
-  String accessKey;
+  String? accessKey = Platform.environment[_kAWSLambdaAccessKey];
 
   /// Secret access key that is acquired via STS.
-  String secretAccessKey;
+  String? secretAccessKey = Platform.environment[_kAWSLambdaSecretAccesKey];
 
   /// The session token from STS.
-  String sessionToken;
+  String? sessionToken = Platform.environment[_kAWSLambdaSessionToken];
 
   /// Id of the request.
   /// You can use this to track the request for the invocation.
@@ -70,71 +71,8 @@ class Context {
   /// The ARN to identify the function.
   String invokedFunctionArn;
 
-  Context(
-      {String handler,
-      String functionName,
-      String functionMemorySize,
-      String logGroupName,
-      String logStreamName,
-      String requestId,
-      String invokedFunction,
-      String region,
-      String executionEnv,
-      String accessKey,
-      String secretAccessKey,
-      String sessionToken}) {
-    assert(requestId != null);
-    assert(handler != null);
-
-    this.handler = handler ?? Platform.environment[_kAWSLambdaHandler];
-    this.functionName =
-        functionName ?? Platform.environment[_kAWSLambdaFunctionName];
-    this.functionVersion =
-        functionVersion ?? Platform.environment[_kAWSLambdaFunctionVersion];
-    this.functionMemorySize = functionMemorySize ??
-        Platform.environment[_kAWSLambdaFunctionMemorySize];
-    this.logGroupName =
-        logGroupName ?? Platform.environment[_kAWSLambdaLogGroupName];
-    this.logStreamName =
-        logStreamName ?? Platform.environment[_kAWSLambdaLogStreamName];
-    this.requestId = requestId;
-    this.invokedFunctionArn = invokedFunctionArn;
-    this.region = region ?? Platform.environment[_kAWSLambdaRegion];
-    this.executionEnv =
-        executionEnv ?? Platform.environment[_kAWSLambdaExecutionEnv];
-    this.accessKey = accessKey ?? Platform.environment[_kAWSLambdaAccessKey];
-    this.secretAccessKey =
-        secretAccessKey ?? Platform.environment[_kAWSLambdaSecretAccesKey];
-    this.sessionToken =
-        sessionToken ?? Platform.environment[_kAWSLambdaSessionToken];
-  }
-
-  /// Allows to copy a created [Context] over with some new settings.
-  Context copyWith(
-      {String handler,
-      String functionName,
-      String functionMemorySize,
-      String logGroupName,
-      String logStreamName,
-      String requestId,
-      String invokedFunction,
-      String region,
-      String executionEnv,
-      String accessKey,
-      String secretAccessKey,
-      String sessionToken}) {
-    return Context(
-        handler: handler ?? this.handler,
-        functionName: functionName ?? this.functionName,
-        functionMemorySize: functionMemorySize ?? this.functionMemorySize,
-        logGroupName: logGroupName ?? this.logGroupName,
-        logStreamName: logStreamName ?? this.logStreamName,
-        requestId: requestId ?? this.requestId,
-        invokedFunction: invokedFunction ?? this.invokedFunctionArn,
-        region: region ?? this.region,
-        executionEnv: executionEnv ?? this.executionEnv,
-        accessKey: accessKey ?? this.accessKey,
-        secretAccessKey: secretAccessKey ?? this.secretAccessKey,
-        sessionToken: sessionToken ?? this.sessionToken);
-  }
+  Context({
+    required this.requestId,
+    required this.invokedFunctionArn
+  });
 }
