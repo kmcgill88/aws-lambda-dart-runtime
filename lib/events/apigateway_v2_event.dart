@@ -37,7 +37,7 @@ class AwsApiGatewayV2Event {
   final bool isBase64Encoded;
 
   /// Request Context ...
-  final AwsApiGatewayEventRequestContext requestContext;
+  final AwsApiGatewayV2EventRequestContext requestContext;
 
   factory AwsApiGatewayV2Event.fromJson(Map<String, dynamic> json) =>
       _$AwsApiGatewayV2EventFromJson(json);
@@ -59,7 +59,7 @@ class AwsApiGatewayV2Event {
 
 /// API Gateway Event Request Context ...
 @JsonSerializable()
-class AwsApiGatewayEventRequestContext {
+class AwsApiGatewayV2EventRequestContext {
   // "accountId": "123456789012",
   @JsonKey()
   final String accountId;
@@ -76,10 +76,8 @@ class AwsApiGatewayEventRequestContext {
   @JsonKey()
   final String domainPrefix;
 
-  //
-  // /// Headers ...
-  // @JsonKey()
-  // final Map<String, dynamic> http;
+  @JsonKey()
+  final AwsApiGatewayV2EventRequestContextHttp http;
 
   // "requestId": "id",
   @JsonKey()
@@ -101,14 +99,15 @@ class AwsApiGatewayEventRequestContext {
   @JsonKey()
   final int timeEpoch;
 
-  factory AwsApiGatewayEventRequestContext.fromJson(
+  factory AwsApiGatewayV2EventRequestContext.fromJson(
           Map<String, dynamic> json) =>
-      _$AwsApiGatewayEventRequestContextFromJson(json);
+      _$AwsApiGatewayV2EventRequestContextFromJson(json);
 
   Map<String, dynamic> toJson() =>
-      _$AwsApiGatewayEventRequestContextToJson(this);
+      _$AwsApiGatewayV2EventRequestContextToJson(this);
 
-  const AwsApiGatewayEventRequestContext({
+  const AwsApiGatewayV2EventRequestContext({
+    required this.http,
     required this.accountId,
     required this.apiId,
     required this.domainName,
@@ -123,7 +122,7 @@ class AwsApiGatewayEventRequestContext {
 
 /// API Gateway Event Identity
 @JsonSerializable()
-class AwsApiGatewayEventRequestContextHttp {
+class AwsApiGatewayV2EventRequestContextHttp {
   @JsonKey()
   final String method;
 
@@ -139,14 +138,14 @@ class AwsApiGatewayEventRequestContextHttp {
   @JsonKey()
   final String userAgent;
 
-  factory AwsApiGatewayEventRequestContextHttp.fromJson(
+  factory AwsApiGatewayV2EventRequestContextHttp.fromJson(
           Map<String, dynamic> json) =>
-      _$AwsApiGatewayEventRequestContextHttpFromJson(json);
+      _$AwsApiGatewayV2EventRequestContextHttpFromJson(json);
 
   Map<String, dynamic> toJson() =>
-      _$AwsApiGatewayEventRequestContextHttpToJson(this);
+      _$AwsApiGatewayV2EventRequestContextHttpToJson(this);
 
-  const AwsApiGatewayEventRequestContextHttp({
+  const AwsApiGatewayV2EventRequestContextHttp({
     required this.method,
     required this.path,
     required this.protocol,

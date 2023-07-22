@@ -17,7 +17,7 @@ AwsApiGatewayV2Event _$AwsApiGatewayV2EventFromJson(
       headers: json['headers'] as Map<String, dynamic>,
       queryStringParameters:
           json['queryStringParameters'] as Map<String, dynamic>,
-      requestContext: AwsApiGatewayEventRequestContext.fromJson(
+      requestContext: AwsApiGatewayV2EventRequestContext.fromJson(
           json['requestContext'] as Map<String, dynamic>),
       isBase64Encoded: json['isBase64Encoded'] as bool,
     );
@@ -36,9 +36,11 @@ Map<String, dynamic> _$AwsApiGatewayV2EventToJson(
       'requestContext': instance.requestContext,
     };
 
-AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
+AwsApiGatewayV2EventRequestContext _$AwsApiGatewayV2EventRequestContextFromJson(
         Map<String, dynamic> json) =>
-    AwsApiGatewayEventRequestContext(
+    AwsApiGatewayV2EventRequestContext(
+      http: AwsApiGatewayV2EventRequestContextHttp.fromJson(
+          json['http'] as Map<String, dynamic>),
       accountId: json['accountId'] as String,
       apiId: json['apiId'] as String,
       domainName: json['domainName'] as String,
@@ -50,13 +52,14 @@ AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
       timeEpoch: json['timeEpoch'] as int,
     );
 
-Map<String, dynamic> _$AwsApiGatewayEventRequestContextToJson(
-        AwsApiGatewayEventRequestContext instance) =>
+Map<String, dynamic> _$AwsApiGatewayV2EventRequestContextToJson(
+        AwsApiGatewayV2EventRequestContext instance) =>
     <String, dynamic>{
       'accountId': instance.accountId,
       'apiId': instance.apiId,
       'domainName': instance.domainName,
       'domainPrefix': instance.domainPrefix,
+      'http': instance.http,
       'requestId': instance.requestId,
       'routeKey': instance.routeKey,
       'stage': instance.stage,
@@ -64,9 +67,10 @@ Map<String, dynamic> _$AwsApiGatewayEventRequestContextToJson(
       'timeEpoch': instance.timeEpoch,
     };
 
-AwsApiGatewayEventRequestContextHttp
-    _$AwsApiGatewayEventRequestContextHttpFromJson(Map<String, dynamic> json) =>
-        AwsApiGatewayEventRequestContextHttp(
+AwsApiGatewayV2EventRequestContextHttp
+    _$AwsApiGatewayV2EventRequestContextHttpFromJson(
+            Map<String, dynamic> json) =>
+        AwsApiGatewayV2EventRequestContextHttp(
           method: json['method'] as String,
           path: json['path'] as String,
           protocol: json['protocol'] as String,
@@ -74,8 +78,8 @@ AwsApiGatewayEventRequestContextHttp
           userAgent: json['userAgent'] as String,
         );
 
-Map<String, dynamic> _$AwsApiGatewayEventRequestContextHttpToJson(
-        AwsApiGatewayEventRequestContextHttp instance) =>
+Map<String, dynamic> _$AwsApiGatewayV2EventRequestContextHttpToJson(
+        AwsApiGatewayV2EventRequestContextHttp instance) =>
     <String, dynamic>{
       'method': instance.method,
       'path': instance.path,
