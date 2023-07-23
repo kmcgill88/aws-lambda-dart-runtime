@@ -20,7 +20,7 @@ class NextInvocation {
   final String requestId;
 
   /// Deadline milliseconds is the setting for ultimate cancelation of the invocation.
-  final String deadlineMs;
+  final String? deadlineMs;
 
   /// Invoked function ARN is the identifier of the function.
   final String invokedFunctionArn;
@@ -32,7 +32,7 @@ class NextInvocation {
   final String clientContext;
 
   /// Cognito identity is the identity that maybe is used for authorizing the request.
-  final String cognitoIdentity;
+  final String? cognitoIdentity;
 
   /// Digesting a [HttpClientResponse] into a [NextInvocation].
   static Future<NextInvocation> fromResponse(
@@ -42,20 +42,20 @@ class NextInvocation {
       response:
           json.decode((await response.transform(Utf8Decoder()).toList()).first),
       requestId: response.headers.value(runtimeRequestId)!,
-      deadlineMs: response.headers.value(runtimeDeadlineMs)!,
+      deadlineMs: response.headers.value(runtimeDeadlineMs),
       invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn)!,
       traceId: response.headers.value(runtimeTraceId)!,
       clientContext: response.headers.value(runtimeClientContext)!,
-      cognitoIdentity: response.headers.value(runtimeCognitoIdentity)!,
+      cognitoIdentity: response.headers.value(runtimeCognitoIdentity),
     );
   }
 
   const NextInvocation({
     required this.requestId,
-    required this.deadlineMs,
+    this.deadlineMs,
     required this.traceId,
     required this.clientContext,
-    required this.cognitoIdentity,
+    this.cognitoIdentity,
     required this.invokedFunctionArn,
     required this.response,
   });
