@@ -35,9 +35,9 @@ abstract class Event {
 
   /// Creates a new event from a handler type with the [NextInvocation.response].
   static fromHandler<T>(Type type, Map<String, dynamic> json) {
-    if (!exists()) {
-      throw RuntimeException('No handler registered with type "${type}"');
-    }
+    // if (!exists()) {
+    //   throw RuntimeException('No handler registered with type "${type}"');
+    // }
     return _registry[type]!(json);
   }
 }
