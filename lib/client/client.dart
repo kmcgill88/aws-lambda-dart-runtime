@@ -23,13 +23,13 @@ class NextInvocation {
   final String? deadlineMs;
 
   /// Invoked function ARN is the identifier of the function.
-  final String invokedFunctionArn;
+  final String? invokedFunctionArn;
 
   /// Tracing id is the identifier for tracing like X-Ray.
-  final String traceId;
+  final String? traceId;
 
   /// Client context is the context that is provided to the function.
-  final String clientContext;
+  final String? clientContext;
 
   /// Cognito identity is the identity that maybe is used for authorizing the request.
   final String? cognitoIdentity;
@@ -43,21 +43,21 @@ class NextInvocation {
           json.decode((await response.transform(Utf8Decoder()).toList()).first),
       requestId: response.headers.value(runtimeRequestId)!,
       deadlineMs: response.headers.value(runtimeDeadlineMs),
-      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn)!,
-      traceId: response.headers.value(runtimeTraceId)!,
-      clientContext: response.headers.value(runtimeClientContext)!,
+      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn),
+      traceId: response.headers.value(runtimeTraceId),
+      clientContext: response.headers.value(runtimeClientContext),
       cognitoIdentity: response.headers.value(runtimeCognitoIdentity),
     );
   }
 
   const NextInvocation({
     required this.requestId,
-    this.deadlineMs,
-    required this.traceId,
-    required this.clientContext,
-    this.cognitoIdentity,
-    required this.invokedFunctionArn,
     required this.response,
+    this.deadlineMs,
+    this.traceId,
+    this.clientContext,
+    this.cognitoIdentity,
+    this.invokedFunctionArn,
   });
 }
 
