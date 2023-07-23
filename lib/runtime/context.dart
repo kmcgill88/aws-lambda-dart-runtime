@@ -27,7 +27,7 @@ class Context {
   static fromNextInvocation(NextInvocation nextInvocation) {
     return Context(
       requestId: nextInvocation.requestId,
-      invokedFunctionArn: nextInvocation.invokedFunctionArn,
+      invokedFunctionArn: nextInvocation.invokedFunctionArn ?? 'unknown',
     );
   }
 
