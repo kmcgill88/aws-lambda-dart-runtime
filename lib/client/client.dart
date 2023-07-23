@@ -2,13 +2,17 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
+
+
+
 /// Next invocation data wraps the data from the
 /// invocation endpoint of the Lambda Runtime Interface.
+/// https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html
 class NextInvocation {
   static const runtimeRequestId = 'lambda-runtime-aws-request-id';
-  static const runtimeDeadlineMs = 'lambda-runtime-aws-deadline-ms';
+  static const runtimeDeadlineMs = 'lambda-runtime-deadline-ms';
   static const runtimeInvokedFunctionArn =
-      'lambda-runtime-invoked-functions-arn';
+      'lambda-runtime-invoked-function-arn';
   static const runtimeTraceId = 'lambda-runtime-trace-id';
   static const runtimeClientContext = 'lambda-runtime-client-context';
   static const runtimeCognitoIdentity = 'lambda-runtime-cognito-identity';
@@ -20,10 +24,10 @@ class NextInvocation {
   final String requestId;
 
   /// Deadline milliseconds is the setting for ultimate cancelation of the invocation.
-  final String? deadlineMs;
+  final String deadlineMs;
 
   /// Invoked function ARN is the identifier of the function.
-  final String? invokedFunctionArn;
+  final String invokedFunctionArn;
 
   /// Tracing id is the identifier for tracing like X-Ray.
   final String? traceId;
@@ -43,8 +47,8 @@ class NextInvocation {
       response:
           json.decode((await response.transform(Utf8Decoder()).toList()).first),
       requestId: response.headers.value(runtimeRequestId)!,
-      deadlineMs: response.headers.value(runtimeDeadlineMs),
-      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn),
+      deadlineMs: response.headers.value(runtimeDeadlineMs)!,
+      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn)!,
       traceId: response.headers.value(runtimeTraceId),
       clientContext: response.headers.value(runtimeClientContext),
       cognitoIdentity: response.headers.value(runtimeCognitoIdentity),
@@ -54,8 +58,8 @@ class NextInvocation {
   const NextInvocation({
     required this.requestId,
     required this.response,
-    this.invokedFunctionArn,
-    this.deadlineMs,
+    required this.invokedFunctionArn,
+    required this.deadlineMs,
     this.traceId,
     this.clientContext,
     this.cognitoIdentity,
