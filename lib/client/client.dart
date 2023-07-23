@@ -23,7 +23,7 @@ class NextInvocation {
   final String? deadlineMs;
 
   /// Invoked function ARN is the identifier of the function.
-  final String? invokedFunctionArn;
+  final String invokedFunctionArn;
 
   /// Tracing id is the identifier for tracing like X-Ray.
   final String? traceId;
@@ -43,7 +43,7 @@ class NextInvocation {
           json.decode((await response.transform(Utf8Decoder()).toList()).first),
       requestId: response.headers.value(runtimeRequestId)!,
       deadlineMs: response.headers.value(runtimeDeadlineMs),
-      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn),
+      invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn)!,
       traceId: response.headers.value(runtimeTraceId),
       clientContext: response.headers.value(runtimeClientContext),
       cognitoIdentity: response.headers.value(runtimeCognitoIdentity),
@@ -53,11 +53,11 @@ class NextInvocation {
   const NextInvocation({
     required this.requestId,
     required this.response,
+    required this.invokedFunctionArn,
     this.deadlineMs,
     this.traceId,
     this.clientContext,
     this.cognitoIdentity,
-    this.invokedFunctionArn,
   });
 }
 
