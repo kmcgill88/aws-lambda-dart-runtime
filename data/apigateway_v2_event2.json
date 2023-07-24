@@ -1,0 +1,126 @@
+{
+    "version": "2.0",
+    "body": "{\"foo\":\"bar\"}",
+    "resource": "/{proxy+}",
+    "rawPath": "/my/path",
+    "httpMethod": "POST",
+    "isBase64Encoded": true,
+    "queryStringParameters": {
+        "foo": "bar"
+    },
+    "multiValueQueryStringParameters": {
+        "foo": [
+            "bar"
+        ]
+    },
+    "pathParameters": {
+        "proxy": "/path/to/resource"
+    },
+    "stageVariables": {
+        "baz": "qux"
+    },
+    "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Encoding": "gzip, deflate, sdch",
+        "Accept-Language": "en-US,en;q=0.8",
+        "Cache-Control": "max-age=0",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Host": "1234567890.execute-api.us-east-1.amazonaws.com",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Custom User Agent String",
+        "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA==",
+        "X-Forwarded-For": "127.0.0.1, 127.0.0.2",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        ],
+        "Accept-Encoding": [
+            "gzip, deflate, sdch"
+        ],
+        "Accept-Language": [
+            "en-US,en;q=0.8"
+        ],
+        "Cache-Control": [
+            "max-age=0"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Host": [
+            "0123456789.execute-api.us-east-1.amazonaws.com"
+        ],
+        "Upgrade-Insecure-Requests": [
+            "1"
+        ],
+        "User-Agent": [
+            "Custom User Agent String"
+        ],
+        "Via": [
+            "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA=="
+        ],
+        "X-Forwarded-For": [
+            "127.0.0.1, 127.0.0.2"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "requestContext": {
+        "accountId": "123456789012",
+        "apiId": "<urlid>",
+        "authentication": null,
+        "authorizer": {
+            "iam": {
+                "accessKey": "AKIA...",
+                "accountId": "111122223333",
+                "callerId": "AIDA...",
+                "cognitoIdentity": null,
+                "principalOrgId": null,
+                "userArn": "arn:aws:iam::111122223333:user/example-user",
+                "userId": "AIDA..."
+            }
+        },
+        "domainName": "<url-id>.lambda-url.us-west-2.on.aws",
+        "domainPrefix": "<url-id>",
+        "http": {
+            "method": "POST",
+            "path": "/my/path",
+            "protocol": "HTTP/1.1",
+            "sourceIp": "123.123.123.123",
+            "userAgent": "agent"
+        },
+        "requestId": "id",
+        "time": "12/Mar/2020:19:03:58 +0000",
+        "timeEpoch": 1583348638390
+    }
+}

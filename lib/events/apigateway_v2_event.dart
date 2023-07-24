@@ -85,11 +85,11 @@ class AwsApiGatewayV2EventRequestContext {
 
   //"routeKey": "$default",
   @JsonKey()
-  final String routeKey;
+  final String? routeKey;
 
   //"stage": "$default",
   @JsonKey()
-  final String stage;
+  final String? stage;
 
   // "time": "12/Mar/2020:19:03:58 +0000",
   @JsonKey()
@@ -113,10 +113,10 @@ class AwsApiGatewayV2EventRequestContext {
     required this.domainName,
     required this.domainPrefix,
     required this.requestId,
-    required this.routeKey,
-    required this.stage,
     required this.time,
     required this.timeEpoch,
+    this.routeKey,
+    this.stage,
   });
 }
 

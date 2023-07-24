@@ -46,10 +46,10 @@ AwsApiGatewayV2EventRequestContext _$AwsApiGatewayV2EventRequestContextFromJson(
       domainName: json['domainName'] as String,
       domainPrefix: json['domainPrefix'] as String,
       requestId: json['requestId'] as String,
-      routeKey: json['routeKey'] as String,
-      stage: json['stage'] as String,
       time: json['time'] as String,
       timeEpoch: json['timeEpoch'] as int,
+      routeKey: json['routeKey'] as String?,
+      stage: json['stage'] as String?,
     );
 
 Map<String, dynamic> _$AwsApiGatewayV2EventRequestContextToJson(
