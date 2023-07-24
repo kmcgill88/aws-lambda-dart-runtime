@@ -9,7 +9,6 @@ part of 'apigateway_v2_event.dart';
 AwsApiGatewayV2Event _$AwsApiGatewayV2EventFromJson(
         Map<String, dynamic> json) =>
     AwsApiGatewayV2Event(
-      routeKey: json['routeKey'] as String,
       rawPath: json['rawPath'] as String,
       rawQueryString: json['rawQueryString'] as String?,
       version: json['version'] as String,
@@ -18,6 +17,7 @@ AwsApiGatewayV2Event _$AwsApiGatewayV2EventFromJson(
       requestContext: AwsApiGatewayV2EventRequestContext.fromJson(
           json['requestContext'] as Map<String, dynamic>),
       isBase64Encoded: json['isBase64Encoded'] as bool,
+      routeKey: json['routeKey'] as String?,
       queryStringParameters:
           json['queryStringParameters'] as Map<String, dynamic>?,
     );

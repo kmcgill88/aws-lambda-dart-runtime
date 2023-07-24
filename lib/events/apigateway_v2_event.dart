@@ -11,7 +11,7 @@ class AwsApiGatewayV2Event {
 
   /// "routeKey": "$default",
   @JsonKey()
-  final String routeKey;
+  final String? routeKey;
 
   /// "rawPath": "/my/path",
   @JsonKey()
@@ -45,7 +45,6 @@ class AwsApiGatewayV2Event {
   Map<String, dynamic> toJson() => _$AwsApiGatewayV2EventToJson(this);
 
   const AwsApiGatewayV2Event({
-    required this.routeKey,
     required this.rawPath,
     required this.rawQueryString,
     required this.version,
@@ -53,6 +52,7 @@ class AwsApiGatewayV2Event {
     required this.headers,
     required this.requestContext,
     required this.isBase64Encoded,
+    this.routeKey,
     this.queryStringParameters,
   });
 }
