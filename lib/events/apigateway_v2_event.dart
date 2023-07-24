@@ -31,7 +31,7 @@ class AwsApiGatewayV2Event {
 
   /// Query String Parameters ...
   @JsonKey()
-  final Map<String, dynamic> queryStringParameters;
+  final Map<String, dynamic>? queryStringParameters;
 
   @JsonKey()
   final bool isBase64Encoded;
@@ -51,9 +51,9 @@ class AwsApiGatewayV2Event {
     required this.version,
     required this.body,
     required this.headers,
-    required this.queryStringParameters,
     required this.requestContext,
     required this.isBase64Encoded,
+    this.queryStringParameters,
   });
 }
 

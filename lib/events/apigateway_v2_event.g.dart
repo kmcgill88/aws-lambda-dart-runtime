@@ -15,11 +15,11 @@ AwsApiGatewayV2Event _$AwsApiGatewayV2EventFromJson(
       version: json['version'] as String,
       body: json['body'] as String?,
       headers: json['headers'] as Map<String, dynamic>,
-      queryStringParameters:
-          json['queryStringParameters'] as Map<String, dynamic>,
       requestContext: AwsApiGatewayV2EventRequestContext.fromJson(
           json['requestContext'] as Map<String, dynamic>),
       isBase64Encoded: json['isBase64Encoded'] as bool,
+      queryStringParameters:
+          json['queryStringParameters'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$AwsApiGatewayV2EventToJson(

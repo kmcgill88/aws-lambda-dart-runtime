@@ -24,3 +24,4 @@ doc/api/
 *.exe
 *.zip
 bootstrap
+.idea
