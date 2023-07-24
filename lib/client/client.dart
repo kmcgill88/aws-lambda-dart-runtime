@@ -2,9 +2,6 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
-
-
-
 /// Next invocation data wraps the data from the
 /// invocation endpoint of the Lambda Runtime Interface.
 /// https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html
@@ -139,7 +136,8 @@ class Client {
 
   /// Post the invocation response to the AWS Lambda Runtime Interface.
   Future<HttpClientResponse> postInvocationResponse(
-      InvocationResult result) async {
+    InvocationResult result,
+  ) async {
     final request = await _client.postUrl(
       Uri.parse(
         'http://${runtimeApi}/${runtimeApiVersion}/runtime/invocation/${result.requestId}/response',

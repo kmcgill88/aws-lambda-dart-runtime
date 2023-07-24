@@ -6,7 +6,7 @@ import 'context.dart';
 import 'exception.dart';
 
 /// A function which ingests and Event and a [Context]
-/// and returns a [InvocationResult]. The result is ecoded
+/// and returns a [InvocationResult]. The result is encoded
 /// by the [Runtime] and posted to the Lambda API.
 typedef Handler<T> = Future<InvocationResult> Function(
   Context context,
