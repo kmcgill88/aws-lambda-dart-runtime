@@ -3,37 +3,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'apigateway_v2_event.g.dart';
 
 /// API Gateway Event ...
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class AwsApiGatewayV2Event {
   /// "version": "2.0",
-  @JsonKey()
   final String version;
 
   /// "routeKey": "$default",
-  @JsonKey()
   final String? routeKey;
 
   /// "rawPath": "/my/path",
-  @JsonKey()
   final String rawPath;
 
   /// "rawQueryString": "parameter1=value1&parameter1=value2&parameter2=value",
-  @JsonKey()
   final String? rawQueryString;
 
   /// Body ...
-  @JsonKey()
   final String? body;
 
   /// Headers ...
-  @JsonKey()
   final Map<String, dynamic> headers;
 
   /// Query String Parameters ...
-  @JsonKey()
   final Map<String, dynamic>? queryStringParameters;
 
-  @JsonKey()
   final bool isBase64Encoded;
 
   /// Request Context ...
@@ -58,45 +50,35 @@ class AwsApiGatewayV2Event {
 }
 
 /// API Gateway Event Request Context ...
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class AwsApiGatewayV2EventRequestContext {
-  // "accountId": "123456789012",
-  @JsonKey()
+  /// "accountId": "123456789012",
   final String accountId;
 
-  // "apiId": "<urlid>",
-  @JsonKey()
+  /// "apiId": "<urlid>",
   final String apiId;
 
-  //"domainName": "<url-id>.lambda-url.us-west-2.on.aws",
-  @JsonKey()
+  /// "domainName": "<url-id>.lambda-url.us-west-2.on.aws",
   final String domainName;
 
-  //"domainPrefix": "<url-id>",
-  @JsonKey()
+  /// "domainPrefix": "<url-id>",
   final String domainPrefix;
 
-  @JsonKey()
   final AwsApiGatewayV2EventRequestContextHttp http;
 
-  // "requestId": "id",
-  @JsonKey()
+  /// "requestId": "id",
   final String requestId;
 
-  //"routeKey": "$default",
-  @JsonKey()
+  /// "routeKey": "$default",
   final String? routeKey;
 
-  //"stage": "$default",
-  @JsonKey()
+  /// "stage": "$default",
   final String? stage;
 
-  // "time": "12/Mar/2020:19:03:58 +0000",
-  @JsonKey()
+  ///  "time": "12/Mar/2020:19:03:58 +0000",
   final String time;
 
-  // "timeEpoch": 1583348638390
-  @JsonKey()
+  ///  "timeEpoch": 1583348638390
   final int timeEpoch;
 
   factory AwsApiGatewayV2EventRequestContext.fromJson(
@@ -123,19 +105,10 @@ class AwsApiGatewayV2EventRequestContext {
 /// API Gateway Event Identity
 @JsonSerializable()
 class AwsApiGatewayV2EventRequestContextHttp {
-  @JsonKey()
   final String method;
-
-  @JsonKey()
   final String path;
-
-  @JsonKey()
   final String protocol;
-
-  @JsonKey()
   final String sourceIp;
-
-  @JsonKey()
   final String userAgent;
 
   factory AwsApiGatewayV2EventRequestContextHttp.fromJson(

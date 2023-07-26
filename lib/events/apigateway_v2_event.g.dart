@@ -33,7 +33,7 @@ Map<String, dynamic> _$AwsApiGatewayV2EventToJson(
       'headers': instance.headers,
       'queryStringParameters': instance.queryStringParameters,
       'isBase64Encoded': instance.isBase64Encoded,
-      'requestContext': instance.requestContext,
+      'requestContext': instance.requestContext.toJson(),
     };
 
 AwsApiGatewayV2EventRequestContext _$AwsApiGatewayV2EventRequestContextFromJson(
@@ -59,7 +59,7 @@ Map<String, dynamic> _$AwsApiGatewayV2EventRequestContextToJson(
       'apiId': instance.apiId,
       'domainName': instance.domainName,
       'domainPrefix': instance.domainPrefix,
-      'http': instance.http,
+      'http': instance.http.toJson(),
       'requestId': instance.requestId,
       'routeKey': instance.routeKey,
       'stage': instance.stage,
