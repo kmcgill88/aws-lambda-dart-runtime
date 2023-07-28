@@ -118,58 +118,58 @@ class AwsApiGatewayEvent {
 @JsonSerializable()
 class AwsApiGatewayEventHeaders {
   @JsonKey(name: "Accept")
-  final String accept;
+  final String? accept;
 
   @JsonKey(name: "Accept-Encoding")
-  final String acceptEncoding;
+  final String? acceptEncoding;
 
   @JsonKey(name: "CloudFront-Forwarded-Proto")
-  final String cloudfrontForwardProto;
+  final String? cloudfrontForwardProto;
 
   @JsonKey(name: "CloudFront-Is-Desktop-Viewer")
-  final String cloudfrontIsDesktopViewer;
+  final String? cloudfrontIsDesktopViewer;
 
   @JsonKey(name: "CloudFront-Is-Mobile-Viewer")
-  final String cloudfrontIsMobileViewer;
+  final String? cloudfrontIsMobileViewer;
 
   @JsonKey(name: "CloudFront-Is-SmartTV-Viewer")
-  final String cloudfrontIsSmartTvViewer;
+  final String? cloudfrontIsSmartTvViewer;
 
   @JsonKey(name: "CloudFront-Is-Tablet-Viewer")
-  final String cloudfrontIsTabletViewer;
+  final String? cloudfrontIsTabletViewer;
 
   @JsonKey(name: "CloudFront-Viewer-Country")
-  final String cloudfrontViewerCountry;
+  final String? cloudfrontViewerCountry;
 
   @JsonKey(name: "Host")
-  final String host;
+  final String? host;
 
   @JsonKey(name: "Upgrade-Insecure-Requests")
-  final String upgradeInsecureRequests;
+  final String? upgradeInsecureRequests;
 
   @JsonKey(name: "User-Agent")
-  final String userAgent;
+  final String? userAgent;
 
   @JsonKey(name: "Via")
-  final String via;
+  final String? via;
 
   @JsonKey(name: "X-Amz-Cf-Id")
-  final String xAmzCfId;
+  final String? xAmzCfId;
 
   @JsonKey(name: "X-Forwarded-For")
-  final String xForwardedFor;
+  final String? xForwardedFor;
 
   @JsonKey(name: "X-Forwarded-Port")
-  final String xForwardedPort;
+  final String? xForwardedPort;
 
   @JsonKey(name: "X-Forwarded-Proto")
-  final String xForwardedProto;
+  final String? xForwardedProto;
 
   @JsonKey(name: "Cache-Control")
-  final String cacheControl;
+  final String? cacheControl;
 
   @JsonKey(name: "X-Amzn-Trace-Id")
-  final String xAmznTraceId;
+  final String? xAmznTraceId;
 
   @JsonKey(includeFromJson: false)
   Map<String, dynamic> raw = {};
@@ -183,25 +183,26 @@ class AwsApiGatewayEventHeaders {
 
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventHeadersToJson(this);
 
-  AwsApiGatewayEventHeaders(
-      {required this.accept,
-      required this.acceptEncoding,
-      required this.cloudfrontIsDesktopViewer,
-      required this.cloudfrontIsMobileViewer,
-      required this.cloudfrontIsSmartTvViewer,
-      required this.cloudfrontForwardProto,
-      required this.cloudfrontIsTabletViewer,
-      required this.cloudfrontViewerCountry,
-      required this.upgradeInsecureRequests,
-      required this.cacheControl,
-      required this.host,
-      required this.via,
-      required this.userAgent,
-      required this.xAmzCfId,
-      required this.xAmznTraceId,
-      required this.xForwardedFor,
-      required this.xForwardedPort,
-      required this.xForwardedProto});
+  AwsApiGatewayEventHeaders({
+    this.accept,
+    this.acceptEncoding,
+    this.cloudfrontIsDesktopViewer,
+    this.cloudfrontIsMobileViewer,
+    this.cloudfrontIsSmartTvViewer,
+    this.cloudfrontForwardProto,
+    this.cloudfrontIsTabletViewer,
+    this.cloudfrontViewerCountry,
+    this.upgradeInsecureRequests,
+    this.cacheControl,
+    this.host,
+    this.via,
+    this.userAgent,
+    this.xAmzCfId,
+    this.xAmznTraceId,
+    this.xForwardedFor,
+    this.xForwardedPort,
+    this.xForwardedProto,
+  });
 }
 
 /// API Gateway Event Request Context ...
@@ -214,7 +215,7 @@ class AwsApiGatewayEventRequestContext {
   final String resourceId;
 
   @JsonKey()
-  final String stage;
+  final String? stage;
 
   @JsonKey()
   final String requestId;
@@ -238,7 +239,7 @@ class AwsApiGatewayEventRequestContext {
   const AwsApiGatewayEventRequestContext({
     required this.accountId,
     required this.resourceId,
-    required this.stage,
+    this.stage,
     required this.requestId,
     required this.resourcePath,
     required this.httpMethod,
@@ -250,37 +251,37 @@ class AwsApiGatewayEventRequestContext {
 @JsonSerializable()
 class AwsApiGatewayEventRequestContextIdentity {
   @JsonKey()
-  final String cognitoIdentityPoolId;
+  final String? cognitoIdentityPoolId;
 
   @JsonKey()
-  final String accountId;
+  final String? accountId;
 
   @JsonKey()
-  final String cognitoIdentityId;
+  final String? cognitoIdentityId;
 
   @JsonKey()
-  final String caller;
+  final String? caller;
 
   @JsonKey()
-  final String apiKey;
+  final String? apiKey;
 
   @JsonKey()
-  final String sourceIp;
+  final String? sourceIp;
 
   @JsonKey()
-  final String cognitoAuthenticationType;
+  final String? cognitoAuthenticationType;
 
   @JsonKey()
-  final String cognitoAuthenticationProvider;
+  final String? cognitoAuthenticationProvider;
 
   @JsonKey()
-  final String userArn;
+  final String? userArn;
 
   @JsonKey()
-  final String userAgent;
+  final String? userAgent;
 
   @JsonKey()
-  final String user;
+  final String? user;
 
   factory AwsApiGatewayEventRequestContextIdentity.fromJson(
           Map<String, dynamic> json) =>

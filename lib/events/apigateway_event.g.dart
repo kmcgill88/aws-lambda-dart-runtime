@@ -38,24 +38,26 @@ Map<String, dynamic> _$AwsApiGatewayEventToJson(AwsApiGatewayEvent instance) =>
 AwsApiGatewayEventHeaders _$AwsApiGatewayEventHeadersFromJson(
         Map<String, dynamic> json) =>
     AwsApiGatewayEventHeaders(
-      accept: json['Accept'] as String,
-      acceptEncoding: json['Accept-Encoding'] as String,
-      cloudfrontIsDesktopViewer: json['CloudFront-Is-Desktop-Viewer'] as String,
-      cloudfrontIsMobileViewer: json['CloudFront-Is-Mobile-Viewer'] as String,
-      cloudfrontIsSmartTvViewer: json['CloudFront-Is-SmartTV-Viewer'] as String,
-      cloudfrontForwardProto: json['CloudFront-Forwarded-Proto'] as String,
-      cloudfrontIsTabletViewer: json['CloudFront-Is-Tablet-Viewer'] as String,
-      cloudfrontViewerCountry: json['CloudFront-Viewer-Country'] as String,
-      upgradeInsecureRequests: json['Upgrade-Insecure-Requests'] as String,
-      cacheControl: json['Cache-Control'] as String,
-      host: json['Host'] as String,
-      via: json['Via'] as String,
-      userAgent: json['User-Agent'] as String,
-      xAmzCfId: json['X-Amz-Cf-Id'] as String,
-      xAmznTraceId: json['X-Amzn-Trace-Id'] as String,
-      xForwardedFor: json['X-Forwarded-For'] as String,
-      xForwardedPort: json['X-Forwarded-Port'] as String,
-      xForwardedProto: json['X-Forwarded-Proto'] as String,
+      accept: json['Accept'] as String?,
+      acceptEncoding: json['Accept-Encoding'] as String?,
+      cloudfrontIsDesktopViewer:
+          json['CloudFront-Is-Desktop-Viewer'] as String?,
+      cloudfrontIsMobileViewer: json['CloudFront-Is-Mobile-Viewer'] as String?,
+      cloudfrontIsSmartTvViewer:
+          json['CloudFront-Is-SmartTV-Viewer'] as String?,
+      cloudfrontForwardProto: json['CloudFront-Forwarded-Proto'] as String?,
+      cloudfrontIsTabletViewer: json['CloudFront-Is-Tablet-Viewer'] as String?,
+      cloudfrontViewerCountry: json['CloudFront-Viewer-Country'] as String?,
+      upgradeInsecureRequests: json['Upgrade-Insecure-Requests'] as String?,
+      cacheControl: json['Cache-Control'] as String?,
+      host: json['Host'] as String?,
+      via: json['Via'] as String?,
+      userAgent: json['User-Agent'] as String?,
+      xAmzCfId: json['X-Amz-Cf-Id'] as String?,
+      xAmznTraceId: json['X-Amzn-Trace-Id'] as String?,
+      xForwardedFor: json['X-Forwarded-For'] as String?,
+      xForwardedPort: json['X-Forwarded-Port'] as String?,
+      xForwardedProto: json['X-Forwarded-Proto'] as String?,
     );
 
 Map<String, dynamic> _$AwsApiGatewayEventHeadersToJson(
@@ -86,7 +88,7 @@ AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
     AwsApiGatewayEventRequestContext(
       accountId: json['accountId'] as String,
       resourceId: json['resourceId'] as String,
-      stage: json['stage'] as String,
+      stage: json['stage'] as String?,
       requestId: json['requestId'] as String,
       resourcePath: json['resourcePath'] as String,
       httpMethod: json['httpMethod'] as String,
@@ -109,19 +111,19 @@ AwsApiGatewayEventRequestContextIdentity
     _$AwsApiGatewayEventRequestContextIdentityFromJson(
             Map<String, dynamic> json) =>
         AwsApiGatewayEventRequestContextIdentity(
-          cognitoIdentityPoolId: json['cognitoIdentityPoolId'] as String,
+          cognitoIdentityPoolId: json['cognitoIdentityPoolId'] as String?,
           cognitoAuthenticationProvider:
-              json['cognitoAuthenticationProvider'] as String,
+              json['cognitoAuthenticationProvider'] as String?,
           cognitoAuthenticationType:
-              json['cognitoAuthenticationType'] as String,
-          caller: json['caller'] as String,
-          accountId: json['accountId'] as String,
-          cognitoIdentityId: json['cognitoIdentityId'] as String,
-          apiKey: json['apiKey'] as String,
-          sourceIp: json['sourceIp'] as String,
-          user: json['user'] as String,
-          userAgent: json['userAgent'] as String,
-          userArn: json['userArn'] as String,
+              json['cognitoAuthenticationType'] as String?,
+          caller: json['caller'] as String?,
+          accountId: json['accountId'] as String?,
+          cognitoIdentityId: json['cognitoIdentityId'] as String?,
+          apiKey: json['apiKey'] as String?,
+          sourceIp: json['sourceIp'] as String?,
+          user: json['user'] as String?,
+          userAgent: json['userAgent'] as String?,
+          userArn: json['userArn'] as String?,
         );
 
 Map<String, dynamic> _$AwsApiGatewayEventRequestContextIdentityToJson(
