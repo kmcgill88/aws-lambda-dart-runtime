@@ -39,7 +39,6 @@ class NextInvocation {
   static Future<NextInvocation> fromResponse(
     HttpClientResponse response,
   ) async {
-    print('fromResponse Headers: ${response.headers}');
     return NextInvocation(
       response:
           json.decode((await response.transform(Utf8Decoder()).toList()).first),
