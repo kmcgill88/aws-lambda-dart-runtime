@@ -10,6 +10,7 @@ abstract class Event {
   static final _registry = {
     AwsApiGatewayEvent: (Map<String, dynamic> json) => AwsApiGatewayEvent.fromJson(json),
     AwsApiGatewayV2Event: (Map<String, dynamic> json) => AwsApiGatewayV2Event.fromJson(json),
+    Map<String, dynamic>: (Map<String, dynamic> json) => json,
   };
 
   /// Checks if a type of event is already registered.
