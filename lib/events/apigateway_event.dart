@@ -85,15 +85,15 @@ class AwsApiGatewayEvent {
 
   /// Path Parameters ...
   @JsonKey()
-  final Map<String, dynamic> pathParameters;
+  final Map<String, dynamic>? pathParameters;
 
   /// Query String Parameters ...
   @JsonKey()
-  final Map<String, dynamic> queryStringParameters;
+  final Map<String, dynamic>? queryStringParameters;
 
   /// Stage Variables ...
   @JsonKey()
-  final Map<String, dynamic> stageVariables;
+  final Map<String, dynamic>? stageVariables;
 
   /// Request Context ...
   final AwsApiGatewayEventRequestContext requestContext;
@@ -103,16 +103,17 @@ class AwsApiGatewayEvent {
 
   Map<String, dynamic> toJson() => _$AwsApiGatewayEventToJson(this);
 
-  const AwsApiGatewayEvent(
-      {required this.resource,
-      required this.path,
-      required this.httpMethod,
-      required this.body,
-      required this.headers,
-      required this.queryStringParameters,
-      required this.stageVariables,
-      required this.requestContext,
-      required this.pathParameters});
+  const AwsApiGatewayEvent({
+    required this.resource,
+    required this.path,
+    required this.httpMethod,
+    required this.body,
+    required this.headers,
+    required this.requestContext,
+    this.queryStringParameters,
+    this.stageVariables,
+    this.pathParameters,
+  });
 }
 
 /// API Gateway Event Headers ...

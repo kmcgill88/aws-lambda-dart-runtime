@@ -32,12 +32,12 @@ AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) =>
       body: json['body'] as String?,
       headers: AwsApiGatewayEventHeaders.fromJson(
           json['headers'] as Map<String, dynamic>),
-      queryStringParameters:
-          json['queryStringParameters'] as Map<String, dynamic>,
-      stageVariables: json['stageVariables'] as Map<String, dynamic>,
       requestContext: AwsApiGatewayEventRequestContext.fromJson(
           json['requestContext'] as Map<String, dynamic>),
-      pathParameters: json['pathParameters'] as Map<String, dynamic>,
+      queryStringParameters:
+          json['queryStringParameters'] as Map<String, dynamic>?,
+      stageVariables: json['stageVariables'] as Map<String, dynamic>?,
+      pathParameters: json['pathParameters'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$AwsApiGatewayEventToJson(AwsApiGatewayEvent instance) =>
