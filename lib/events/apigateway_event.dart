@@ -211,19 +211,19 @@ class AwsApiGatewayEventHeaders {
 @JsonSerializable()
 class AwsApiGatewayEventRequestContext {
   @JsonKey()
-  final String accountId;
+  final String? accountId;
 
   @JsonKey()
-  final String resourceId;
+  final String? resourceId;
 
   @JsonKey()
   final String? stage;
 
   @JsonKey()
-  final String requestId;
+  final String? requestId;
 
   @JsonKey()
-  final String resourcePath;
+  final String? resourcePath;
 
   @JsonKey()
   final String httpMethod;
@@ -239,11 +239,11 @@ class AwsApiGatewayEventRequestContext {
       _$AwsApiGatewayEventRequestContextToJson(this);
 
   const AwsApiGatewayEventRequestContext({
-    required this.accountId,
-    required this.resourceId,
+    this.accountId,
+    this.resourceId,
     this.stage,
-    required this.requestId,
-    required this.resourcePath,
+    this.requestId,
+    this.resourcePath,
     required this.httpMethod,
     required this.apiId,
   });

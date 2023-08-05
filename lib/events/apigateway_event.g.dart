@@ -104,11 +104,11 @@ Map<String, dynamic> _$AwsApiGatewayEventHeadersToJson(
 AwsApiGatewayEventRequestContext _$AwsApiGatewayEventRequestContextFromJson(
         Map<String, dynamic> json) =>
     AwsApiGatewayEventRequestContext(
-      accountId: json['accountId'] as String,
-      resourceId: json['resourceId'] as String,
+      accountId: json['accountId'] as String?,
+      resourceId: json['resourceId'] as String?,
       stage: json['stage'] as String?,
-      requestId: json['requestId'] as String,
-      resourcePath: json['resourcePath'] as String,
+      requestId: json['requestId'] as String?,
+      resourcePath: json['resourcePath'] as String?,
       httpMethod: json['httpMethod'] as String,
       apiId: json['apiId'] as String,
     );
