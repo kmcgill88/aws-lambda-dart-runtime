@@ -8,6 +8,7 @@ part 'apigateway_event.g.dart';
 /// to the API Gateway. It contains the [body] of the HTTP response.
 /// It also contains a HTTP Status Code which by default is `200`.
 /// Furthermore it indicates if the [body] is Base64 encoded or not.
+@JsonSerializable(explicitToJson: true)
 class AwsApiGatewayResponse {
   /// The body of the HTTP Response send from the API Gateway to the client.
   String? body;

@@ -6,6 +6,24 @@ part of 'apigateway_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AwsApiGatewayResponse _$AwsApiGatewayResponseFromJson(
+        Map<String, dynamic> json) =>
+    AwsApiGatewayResponse(
+      body: json['body'] as String?,
+      headers: Map<String, String>.from(json['headers'] as Map),
+      isBase64Encoded: json['isBase64Encoded'] as bool,
+      statusCode: json['statusCode'] as int,
+    );
+
+Map<String, dynamic> _$AwsApiGatewayResponseToJson(
+        AwsApiGatewayResponse instance) =>
+    <String, dynamic>{
+      'body': instance.body,
+      'isBase64Encoded': instance.isBase64Encoded,
+      'statusCode': instance.statusCode,
+      'headers': instance.headers,
+    };
+
 AwsApiGatewayEvent _$AwsApiGatewayEventFromJson(Map<String, dynamic> json) =>
     AwsApiGatewayEvent(
       resource: json['resource'] as String,
