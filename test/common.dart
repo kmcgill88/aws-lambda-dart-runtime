@@ -1,22 +1,8 @@
 import 'dart:io';
 
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-class MockHttpClientResponse extends Mock implements HttpClientResponse {
-  MockHttpClientResponse(this.statusCode,
-      {this.result, this.headers, this.body});
-
-  @override
-  final int statusCode;
-
-  final String result;
-
-  @override
-  final HttpHeaders headers;
-
-  // encode the response body as bytes.
-  final List<int> body;
-}
+class MockHttpClientResponse extends Mock implements HttpClientResponse {}
 
 /// A mocked [HttpHeaders] that ignores all writes.
 class MockHttpHeaders extends HttpHeaders {
@@ -45,5 +31,5 @@ class MockHttpHeaders extends HttpHeaders {
   void set(String name, Object value, {bool preserveHeaderCase = false}) {}
 
   @override
-  String value(String name) => null;
+  String? value(String name) => null;
 }

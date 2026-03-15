@@ -1,5 +1,6 @@
 import "dart:convert";
 
+import "package:mocktail/mocktail.dart";
 import "package:test/test.dart";
 
 import 'package:aws_lambda_dart_runtime/runtime/context.dart';
@@ -24,9 +25,15 @@ void main() {
       };
 
       final headers = MockHttpHeaders();
+      final response = MockHttpClientResponse();
 
-      final response = MockHttpClientResponse(200,
-          result: "", headers: headers, body: utf8.encode("{}"));
+      when(() => response.statusCode).thenReturn(200);
+      when(() => response.headers).thenReturn(headers);
+      whenListen(
+        response,
+        Stream.fromIterable([utf8.encode("{}")]),
+      );
+
       final nextInvocation = await NextInvocation.fromResponse(response);
 
       final ctx = Context.fromNextInvocation(nextInvocation);
