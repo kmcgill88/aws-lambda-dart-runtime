@@ -36,12 +36,17 @@ class NextInvocation {
   final String? cognitoIdentity;
 
   /// Digesting a [HttpClientResponse] into a [NextInvocation].
+  ///
+  /// The body MUST be aggregated in full before decoding: the AWS runtime
+  /// API delivers large next-invocation responses across multiple HTTP
+  /// chunks, and decoding only the first chunk crashes on the chunk boundary
+  /// (production signature: `FormatException` at the split character;
+  /// observed at 3,565 on 2026-11-07). `join()` consumes every chunk.
   static Future<NextInvocation> fromResponse(
     HttpClientResponse response,
   ) async {
     return NextInvocation(
-      response:
-          json.decode((await response.transform(Utf8Decoder()).toList()).first),
+      response: json.decode(await response.transform(Utf8Decoder()).join()),
       requestId: response.headers.value(runtimeRequestId)!,
       deadlineMs: response.headers.value(runtimeDeadlineMs)!,
       invokedFunctionArn: response.headers.value(runtimeInvokedFunctionArn)!,
